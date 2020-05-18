@@ -1,0 +1,79 @@
+.navigationbar{
+    height: 70px;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    color: $text-color;
+    
+    .menu-title {
+        font-size: 25px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+    }
+    
+    .menu-content-container {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+
+
+        .ant-avatar {
+            background: $background;
+            border: 1px solid $border;
+        }
+
+        .menu-avatar-name {
+            font-size: 18px;
+            margin-left: 15px;
+        }
+        .ion-ios-menu{
+            font-size: 36px;
+            width: 65px;
+            align-items: center;
+            cursor: pointer;
+            display: none;
+        }
+    }
+
+    ul{
+        height: 100%;
+        margin-right: 10px;
+        margin-block-start: 0;
+        marker-end: 0;
+        padding-inline-start: 0  ;
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        margin-right:20px ;
+        
+        a {
+            text-decoration: none;
+            padding: 0 20px 0 20px;
+            font-size: 20px;
+            color: $text-color;
+
+            &:hover{
+                color: $text-link;
+            }
+        }
+    }
+    li{
+        margin-left: 10px;
+    }
+}
+
+//add some simple responsive effect
+@media screen and (max-width: 1000px){
+    .navigationbar{
+        .menu-content-container{
+            .ion-ios-menu{
+                display: flex;
+            }
+        }
+
+    }
+
+}
