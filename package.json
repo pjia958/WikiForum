@@ -2,20 +2,25 @@
   "name": "wikiforumcs",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.15",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node -r esm nodemon server.js",
+    "devStart": "nodemon server.js",
+    "server": "npm run start"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -85,7 +85,7 @@ Various ways of linking to Wikipedia content/importing content are possible, ide
 One can annotate questions and comments directly to specific points in the text
 
 
-## Tech in use
+## Some Tech/Dependencies in use
 React: Mainly invovled
 
 Scss: Css style control
@@ -97,6 +97,8 @@ Antd: style misc like avatars and something
 Moment.js: handle posts, request with fake date within json
 
 Jquery: an old way to handle ajax
+
+Nomdemon: hot fresh dev tool
 
  ## Wiki api
 get the content and handle exceptions(e.g. no such article)
