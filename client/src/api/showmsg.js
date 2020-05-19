@@ -16,8 +16,14 @@ function createUser(user) {
     });
 }
 
-function showMsg(){
-    return fetch('/api/msg').then(res => res.json());
+
+
+export function showMsg(){
+    const spanGreeting = document.querySelector("#showmsg");
+
+    return fetch('/api/msg').then(res => res.json())
+        .then(response => response.json())
+        .then(json => spanGreeting.innerHTML = json.message);
 }
 
 export default {

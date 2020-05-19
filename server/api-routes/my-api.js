@@ -16,8 +16,9 @@ export default router => {
     });
 
     router.get("/msg", (req, res) => {
-
+        res.header("Access-Control-Allow-Origin", "*");
         res.json({ message: `Hello, world! Unique ID: ${uuid()}` });
+        //res.send(`Hello you touched the server and the id is ${uuid()}`)
         console.log("touched from nav bar")        
     });
     
