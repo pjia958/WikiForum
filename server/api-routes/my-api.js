@@ -15,10 +15,10 @@ export default router => {
 
     });
 
-    router.get("/", (req, res) => {
+    router.get("/msg", (req, res) => {
 
         res.json({ message: `Hello, world! Unique ID: ${uuid()}` });
-        
+        console.log("touched from nav bar")        
     });
     
 }
