@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-// import apiRoutes from './server/api-routes';
+import apiRoutes from './server/api-routes';
 import path from 'path';
 import mongoose from 'mongoose';
 
@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/WikiForumTest', { useNewUrlParser: t
 
 // Setup our routes. These will be served as first priority.
 // Any request to /api will go through these routes.
-//app.use("/api", apiRoutes);
+app.use("/api", apiRoutes);
 
 // If we're in production...
 if (process.env.NODE_ENV === 'production') {
@@ -42,10 +42,11 @@ if (process.env.NODE_ENV === 'production') {
     //     res.send('hello world')
     // });
 }
-app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    res.send('sadsdas')
-});
+//  Test
+// app.get('/', (req, res) => {
+//     // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+//     res.send('sadsdas')
+// });
 
 // Start the server running. Once the server is running, the given function will be called, which will
 // log a simple message to the server console. Any console.log() statements in your node.js code
