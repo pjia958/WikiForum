@@ -32,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/WikiForumTest', { useNewUrlParser: t
 // API set correct. try: /api/msg
 app.use("/api", apiRoutes);
 
-app.use(cors());
+// app.use(cors());
 
 // If we're in production...
 if (process.env.NODE_ENV === 'production') {
