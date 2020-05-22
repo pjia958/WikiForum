@@ -3,8 +3,11 @@ import React from 'react'
 const spanGreeting = document.querySelector("#showmsg");
 
 function showMsg() {
-    return fetch("http://localhost:10001/api/").then(response => response.json())
-    .then(json => spanGreeting.innerHTML = json.message);
+    // return fetch("/api/msg").then(response => response.json())
+    // .then(json => spanGreeting.innerHTML = json.message);
+
+    return fetch("/api/msg").then(console.log("trigg")).then((response)=>console.log(response));
+
 }
 
 export default function Home(){

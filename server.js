@@ -4,6 +4,7 @@ import session from 'express-session';
 import apiRoutes from './server/api-routes';
 import path from 'path';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 // Setup Express
 // const express = require('express')
@@ -27,7 +28,11 @@ mongoose.connect('mongodb://localhost:27017/WikiForumTest', { useNewUrlParser: t
 
 // Setup our routes. These will be served as first priority.
 // Any request to /api will go through these routes.
+
+// API set correct. try: /api/msg
 app.use("/api", apiRoutes);
+
+app.use(cors());
 
 // If we're in production...
 if (process.env.NODE_ENV === 'production') {
@@ -42,10 +47,11 @@ if (process.env.NODE_ENV === 'production') {
     //     res.send('hello world')
     // });
 }
+
 //  Test
 // app.get('/', (req, res) => {
 //     // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-//     res.send('sadsdas')
+//     res.send('I love WangWang')
 // });
 
 // Start the server running. Once the server is running, the given function will be called, which will
