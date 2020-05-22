@@ -20,7 +20,6 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon -r esm server.js",
-    "devStart": "nodemon server.js",
     "server": "npm run start"
   },
   "eslintConfig": {
