@@ -9,15 +9,15 @@ const navLinks = [
     },
     {
         title: 'WikiForum',
-        path: '/wikiforum'
+        path: '/wikiforum_page'
     },
     {
         title: 'Contact-Me',
-        path: '/contact-me'
+        path: '/contact-me_page'
     },
     {
         title: 'Login',
-        path: '/login'
+        path: '/login_page'
     }
 ]
 

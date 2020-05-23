@@ -1,5 +1,8 @@
 import { v4 as uuid } from 'uuid';
+import bcypt from 'bcrypt'
+import { useStore } from 'react-redux';
 
+const users = []
 export default router => {
     // test
     router.get("/msg", (req, res) => {
@@ -22,6 +25,21 @@ export default router => {
 
     });
 
+    router.post('/signup', async (req, res) => {
+        try{
+            const hashedPassword = await bcypt.hash(req.body.password, 10)
+            users.push({
+                id: uuid().toString(),
+                name: req.body.name,
+                email: req.body.email,
+                password: hashedPassword
+            })
+            res.redirect('/login_page')
+        } catch {
+            res.redirect('/signup_page')
+        }
+        console.log(users)
+    })
 
     
 }
