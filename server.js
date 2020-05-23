@@ -15,6 +15,9 @@ import initialize from './athenConfig'
 const app = express();
 const port = process.env.PORT || 10001;
 
+app.use(flash())
+app.use(cors());
+
 // Setup body-parser
 app.use(bodyParser.json({ extended: false }));
 
@@ -36,7 +39,6 @@ mongoose.connect('mongodb://localhost:27017/WikiForumTest', { useNewUrlParser: t
     () => console.log('Connected to database!'),
     err => console.error(err));
 
-app.use(cors());
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~  login ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.use(express.urlencoded({extended : false}))
@@ -46,7 +48,6 @@ app.use(express.urlencoded({extended : false}))
 //     passport, 
 //     email => users.find(user => user.email === email)
 // )
-app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 // app.use(seesion({

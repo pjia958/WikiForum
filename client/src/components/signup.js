@@ -19,7 +19,7 @@ export class Signup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const signupData = new FormData(e.target)
-        signUp(signupData)
+        //signUp(signupData)
         // console.log(this.state)
          console.log(JSON.stringify(signupData))
     }
@@ -27,7 +27,8 @@ export class Signup extends React.Component {
     render() {
         return(
             <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
+                {/* <form onSubmit={this.handleSubmit} className="white"> */}
+                <form action="http://localhost:10001/api/signup" method="POST" className="white">
                 <h4>Sign up</h4>
                 <div className="input-field">
                     <label htmlFor="email">Email</label>
@@ -46,7 +47,7 @@ export class Signup extends React.Component {
                     <input type="text" id="lastName" onChange={this.handleChange}/>
                 </div>
                 <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-0">Sign up</button>
+                    <button type="submit" className="btn pink lighten-1 z-depth-0">Sign up</button>
                 </div>
                 </form>
             </div>

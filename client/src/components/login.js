@@ -17,7 +17,7 @@ export class Login extends React.Component {
         console.log(e)
         e.preventDefault();
         const loginData = new FormData (e.target)
-        logIn(loginData)
+        //logIn(loginData)
         console.log('the login data is: ' ,loginData)
         console.log(this.state)
     }
@@ -25,7 +25,9 @@ export class Login extends React.Component {
     render() {
         return(
             <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
+                {/* <form onSubmit={this.handleSubmit} className="white"> */}
+                <form action="http://localhost:10001/api/login" method="POST" className="white">
+
                 <h4>Sign in</h4>
                 <div className="input-field">
                     <label htmlFor="email">Email</label>
@@ -36,7 +38,7 @@ export class Login extends React.Component {
                     <input type="password" id="password" onChange={this.handleChange}/>
                 </div>
                 <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-0">Login</button>
+                    <button type="submit" className="btn pink lighten-1 z-depth-0">Login</button>
                 </div>
                 </form>
             </div>

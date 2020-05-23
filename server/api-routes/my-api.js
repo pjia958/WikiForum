@@ -33,11 +33,10 @@ export default router => {
 
     });
 
-    router.post('/signup', async (req, res) => {
+    router.post('/signup', (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
-        console.log("sign up req recieved")
         try{
-            const hashedPassword = await bcypt.hash(req.body.password, 10)
+            const hashedPassword = bcypt.hash(req.body.password, 10)
             users.push({
                 id: uuid().toString(),
                 email: req.body.email,
@@ -45,15 +44,15 @@ export default router => {
                 lastname: req.body.lastName,
                 password: hashedPassword
             })
+            console.log(users)
             res.redirect('http://localhost:3000/login_page')
         } catch {
             res.redirect('http://localhost:3000/signup_page')
         }
-        console.log('the userdata recieved is:',users)
     })
 
     router.post('/login', passport.authenticate('local', {
-        ssuccessRedirect: 'http://localhost:3000/',
+        successRedirect: 'http://localhost:3000/',
         failureRedirect: 'http://localhost:3000/login_page',
         failureFlash: true
     }))
