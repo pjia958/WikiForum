@@ -3,7 +3,6 @@ import {useRouteMatch} from 'react-router-dom'
 
 const generatePage = function(page){
     const component = () => require(`./pages/${page}`).default
-    console.log(component)
     // exception handleling : no certain page
     try {        
         //call hook method to go-on

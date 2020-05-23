@@ -33,10 +33,11 @@ export default router => {
 
     });
 
-    router.post('/signup', (req, res) => {
+    router.post('/signup', async (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
+        console.log('the req body is: ',req.body)
         try{
-            const hashedPassword = bcypt.hash(req.body.password, 10)
+            const hashedPassword = await bcypt.hash(req.body.password, 10)
             users.push({
                 id: uuid().toString(),
                 email: req.body.email,
@@ -44,9 +45,9 @@ export default router => {
                 lastname: req.body.lastName,
                 password: hashedPassword
             })
-            console.log(users)
             res.redirect('http://localhost:3000/login_page')
         } catch {
+            console.log('issues happen when sign up')
             res.redirect('http://localhost:3000/signup_page')
         }
     })

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
-import Nav from './components/nav';
+import Nav from './components/layout/nav';
 import PageRenderer from './page-renderer'
 
 const user = {
@@ -27,7 +27,9 @@ class App extends Component {
         <Switch>
         {/* Render dynamic page without maintaining navlinks */}
         <Route path='/:page' component={PageRenderer} />
-        <Route path="/" render={() => <Redirect to="/home"/>} />
+        <Route exact path="/">
+                <Redirect to="/home_page" />
+              </Route>
         <Route component={()=>'404'} />
         </Switch>
       </div>

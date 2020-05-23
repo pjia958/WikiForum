@@ -1,6 +1,7 @@
 import React from 'react'
 import {logIn} from '../api/authmanagement'
-export class Login extends React.Component {
+
+class Login extends React.Component {
     state = {
         email : '',
         password : ''
@@ -46,3 +47,5 @@ export class Login extends React.Component {
     }
     
 }
+
+export default Login
