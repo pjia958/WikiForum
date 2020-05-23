@@ -1,42 +1,14 @@
-function signUp(usersData){
-    return fetch('/api/signup', {
+export function signUp(usersData){
+  console.log("signing up...")
+    return fetch('http://localhost:10001/api/signup', {
         method: 'POST',
-        body: usersData,
+        body: usersData
       });
 }
 
-function getUsers() {
-    return fetch('/api/users').then(res => res.json());
+export function logIn(usersData){
+  return fetch('http://localhost:10001/api/login', {
+    method: 'POST',
+    body: usersData
+  });
 }
-
-function getUserByUsername(username) {
-    return fetch(`/api/users/${username}`).then(res => res.json());
-}
-
-function createUser(user) {
-    return fetch('/api/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    });
-}
-
-
-
-export function showMsg(){
-    const spanGreeting = document.querySelector("#showmsg");
-
-    return fetch('/api/msg').then(res => res.json())
-        .then(response => response.json())
-        .then(json => spanGreeting.innerHTML = json.message);
-}
-
-export default {
-    // getUsers,
-    // getUserByUsername,
-    // createUser
-    showMsg,
-    signUp
-};

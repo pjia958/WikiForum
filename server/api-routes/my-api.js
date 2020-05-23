@@ -1,8 +1,16 @@
 import { v4 as uuid } from 'uuid';
 import bcypt from 'bcrypt'
 import { useStore } from 'react-redux';
+import passport from 'passport'
+import initialize from '../../athenConfig'
 
+//it should be use in database
 const users = []
+initialize(
+    passport, 
+    email => users.find(user => user.email === email)
+)
+
 export default router => {
     // test
     router.get("/msg", (req, res) => {
@@ -26,20 +34,28 @@ export default router => {
     });
 
     router.post('/signup', async (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        console.log("sign up req recieved")
         try{
             const hashedPassword = await bcypt.hash(req.body.password, 10)
             users.push({
                 id: uuid().toString(),
-                name: req.body.name,
                 email: req.body.email,
+                firstname: req.body.firstName,
+                lastname: req.body.lastName,
                 password: hashedPassword
             })
-            res.redirect('/login_page')
+            res.redirect('http://localhost:3000/login_page')
         } catch {
-            res.redirect('/signup_page')
+            res.redirect('http://localhost:3000/signup_page')
         }
-        console.log(users)
+        console.log('the userdata recieved is:',users)
     })
 
+    router.post('/login', passport.authenticate('local', {
+        ssuccessRedirect: 'http://localhost:3000/',
+        failureRedirect: 'http://localhost:3000/login_page',
+        failureFlash: true
+    }))
     
 }

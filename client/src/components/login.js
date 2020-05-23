@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {logIn} from '../api/authmanagement'
 export class Login extends React.Component {
     state = {
         email : '',
@@ -16,6 +16,9 @@ export class Login extends React.Component {
     handleSubmit = (e) => {
         console.log(e)
         e.preventDefault();
+        const loginData = new FormData (e.target)
+        logIn(loginData)
+        console.log('the login data is: ' ,loginData)
         console.log(this.state)
     }
 
