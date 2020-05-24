@@ -29,7 +29,7 @@ userSchema.virtual('fullName')
         this.lastName = value.substr(value.indexOf(' ') + 1);
     });
 
-export const User = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema, 'User');
 
 const articleSchema = new Schema({
     title: { type: String, required: true },
@@ -41,7 +41,7 @@ const articleSchema = new Schema({
     timestamps: {}
 });
 
-export const Article = mongoose.model('Article', articleSchema);
+export const Article = mongoose.model('Article', articleSchema, 'Article');
 
 const opinionSchema = new Schema({
     user_id: mongoose.Schema.ObjectId,

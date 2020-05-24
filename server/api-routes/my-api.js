@@ -4,7 +4,8 @@ import { useStore } from 'react-redux';
 import passport from 'passport'
 import initialize from '../../athenConfig'
 import insertArticle from '../controller/articlecontrl'
-import {Article} from '../db/schema'
+import {Article, User} from '../db/schema'
+import mongoose from 'mongoose'
 
 //it should be use in database
 const users = []
@@ -51,10 +52,10 @@ export default router => {
             content: req.body.content,
             date: new Date()
           });
-          newArticle.save((error) => {
-            if (error) {
-                console.log('error when inserting',error)
-            }
+            newArticle.save().then(
+            (result) => {console.log(result)},
+            (error) => { res.send({ postCreated: false }); }
+          );
     });
 
     router.post('/signup', async (req, res) => {
@@ -82,5 +83,4 @@ export default router => {
         failureFlash: true
     }))
     
-});
 }
