@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {createArticle} from '../../redux/actions/articleactions'
-
+import FetchArticle from '../fetcharticle'
 class CreateArticle extends React.Component {
     state = {
         title : '',
@@ -17,7 +17,7 @@ class CreateArticle extends React.Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log('the article is(from createarti com): ',this.state)
+        //console.log('the article is(from createarti com): ',this.state)
         this.props.createArticle(this.state)
     }
 
@@ -37,6 +37,7 @@ class CreateArticle extends React.Component {
                 <div className="input-field">
                     <button className="btn pink lighten-1 z-depth-0">Create</button>
                 </div>
+                <FetchArticle />
                 </form>
             </div>
         );

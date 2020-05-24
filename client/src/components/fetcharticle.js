@@ -46,8 +46,8 @@ export default class FetchArticle extends Component{
     }
         return(
             <div>
-                <input type="text" placeholder="Enter a search term" id="inputSearchTerm"></input>
-                <button type="submit" id="fetch" onClick={()=>fetchArticle()}>Fectch </button>
+                <input className="input-field" type="text" placeholder="Enter a search term" id="inputSearchTerm"></input>
+                <button className="btn pink lighten-1 z-depth-0" type="submit" id="fetch" onClick={()=>fetchArticle()}>Fectch </button>
                 <div id="articleData"></div>
             </div>
         )

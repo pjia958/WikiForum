@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 
 import Nav from './components/layout/nav';
 import PageRenderer from './page-renderer'
-import ProjectDetails from './components/articles/articledetails';
+import ArticleDetails from './components/articles/articledetails';
 
 const user = {
   id: '',
@@ -31,7 +31,7 @@ class App extends Component {
         <Route exact path="/">
                 <Redirect to="/home_page" />
         </Route>
-        <Route path='/article/:id' component={ProjectDetails} />
+        <Route path='/article/:id' component={ArticleDetails} />
         <Route component={()=>'404'} />
         </Switch>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProjectDetails = (props) => {
+const ArticleDetails = (props) => {
     // console.log(props)
     const id = props.match.params.id;
 
@@ -20,4 +20,4 @@ const ProjectDetails = (props) => {
     )
 }
 
-export default ProjectDetails
+export default ArticleDetails

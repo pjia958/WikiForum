@@ -3,6 +3,8 @@ import bcypt from 'bcrypt'
 import { useStore } from 'react-redux';
 import passport from 'passport'
 import initialize from '../../athenConfig'
+import insertArticle from '../controller/articlecontrl'
+import {Article} from '../db/schema'
 
 //it should be use in database
 const users = []
@@ -33,6 +35,28 @@ export default router => {
 
     });
 
+    router.post("/article/newArticle", (req, res)=> {
+        console.log("server recieved the post req, handling...",req.body,'user info:',req.user)
+        // if (req.user) {
+        // if (true) {
+        //     insertArticle(req.body).then(
+        //     (result) => { res.send(Object.assign({}, result._doc, { postCreated: true })); },
+        //     (error) => { res.send({ postCreated: false }); }
+        //   );
+        // } else {
+        //   res.send({ postCreated: false });
+        // }
+        const newArticle = new Article({
+            title: req.body.title,
+            content: req.body.content,
+            date: new Date()
+          });
+          newArticle.save((error) => {
+            if (error) {
+                console.log('error when inserting',error)
+            }
+    });
+
     router.post('/signup', async (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
         console.log('the req body is: ',req.body)
@@ -58,4 +82,5 @@ export default router => {
         failureFlash: true
     }))
     
+});
 }
