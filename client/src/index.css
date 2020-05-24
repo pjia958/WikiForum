@@ -5,9 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(./assets/images/7squirtle.jpg) no-repeat;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+form {
+   margin-top: 20px;
+   padding: 20px;
+}
+
+form button, form h5 {
+  margin: 20px, 0;
 }

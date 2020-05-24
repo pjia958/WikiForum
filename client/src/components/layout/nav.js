@@ -7,7 +7,7 @@ import SignedoutNav from './signedoutlinks'
 const navLinks = [
     {
         title: 'Home',
-        path: '/home_page'
+        path: '/'
     }
 ]
 
@@ -27,8 +27,6 @@ export default function Nav({user}){
                     <SignedoutNav />
                     <SignedinNav />
                 </ul>
-                {/* responsive component */}
-                <i className="ionicons icon ion-ios-menu" onClick={()=>setMenuActive(!menuActive)}/>
             </div>
         </nav> 
     )

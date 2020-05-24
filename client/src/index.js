@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import './assets/scss/base.scss'
 import 'antd/dist/antd.css'
 import '@quasar/extras/ionicons-v4/ionicons-v4.css'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers/index'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,7 +1,5 @@
 import React from 'react'
-import {signUp} from '../api/authmanagement'
-import ShowArticle from './showarticles'
-
+import {signUp} from '../../api/authmanagement'
 
 export class Signup extends React.Component {
     state = {
@@ -20,24 +18,25 @@ export class Signup extends React.Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
+        e.preventDefault();
+        console.log(this.state)
         // let signupData = new FormData()
         // signupData.append('c', 'login');
         // signupData.append('email', this.state.email)
         // signupData.append('password', this.state.password)
         // signupData.append('firstname', this.state.firstName)
         // signupData.append('lastname', this.state.lastName)
-        let signupData = new FormData()
+        // let signupData = new FormData()
 
-        console.log(this.state)
-        console.log(signupData)
+        // console.log(this.state)
+        // console.log(signupData)
 
-        signUp(signupData)
+        // signUp(signupData)
     }
 
     render() {
         return(
             <div className="container">
-                <ShowArticle />
                 <form onSubmit={this.handleSubmit} className="white">
                 <h4>Sign up</h4>
                 {/* <form action="http://localhost:10001/api/signup" method="POST" className="white">

@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ArticleList from './articles/articlelist'
+import Home from './home'
 
-class ShowArticle extends Component {
+class ShowArticles extends Component {
 
     constructor(props) {
         super(props)
     }
 
     render() {
-        console.log(this.props)
+        const { articles } = this.props
         return(
             <div>
-                <ArticleList />
+                <ArticleList articles={articles} />
             </div>
         )
     }
@@ -24,4 +25,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(ShowArticle)
+export default connect(mapStateToProps)(ShowArticles)

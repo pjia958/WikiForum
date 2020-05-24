@@ -1,12 +1,11 @@
 import React from 'react'
-import { response } from 'express';
-import ShowArticle from '../components/showarticles'
+import Home from '../components/home'
+import {Link} from 'react-router-dom'
 
 export default function HomePage(){
     return (
-        <div>
-        <p>WelcomeWelcomeWelcome</p>
-        <ShowArticle />
-        </div>
+    <div className="row">
+            <Home />
+    </div>
     )
 }

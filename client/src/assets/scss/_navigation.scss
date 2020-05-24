@@ -1,5 +1,6 @@
 .navigationbar{
-    height: 70px;
+    margin:auto;
+    height: 60px;
     width: 100%;
     background: white;
     display: flex;
@@ -7,7 +8,7 @@
     color: $text-color;
     
     .menu-title {
-        font-size: 25px;
+        font-size: px;
         font-weight: 400;
         display: flex;
         align-items: center;
@@ -51,8 +52,8 @@
         
         a {
             text-decoration: none;
-            padding: 0 20px 0 20px;
-            font-size: 20px;
+            padding: 0 10px 0 10px;
+            font-size: 15px;
             color: $text-color;
 
             &:hover{
@@ -61,7 +62,7 @@
         }
     }
     li{
-        margin-left: 10px;
+        margin-left: 0px;
     }
 }
 

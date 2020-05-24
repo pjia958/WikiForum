@@ -1,21 +1,31 @@
-import React, {Component} from 'react'
-import ShowArticle from './showarticles'
+import React from 'react'
+import ShowArticles from './showarticles'
+import {connect} from 'react-redux'
 // To show article lists
-class Home extends Component {
+class Home extends React.Component {
 
     constructor(props){
         super(props)
     }
 
     render() {
+        //console.log('check props from home:',this.props) :can get access
+        const { articles } = this.props
         return(
             <div className="container">
+                successfully render
                 <div className="row">
-                    <ShowArticle />
+                    <ShowArticles articles={articles}/>
                 </div>
             </div>
         )
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        article: state.article.articles
+    }
+}
+
+export default connect(mapStateToProps)(Home)

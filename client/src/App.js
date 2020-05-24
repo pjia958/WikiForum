@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 
 import Nav from './components/layout/nav';
 import PageRenderer from './page-renderer'
+import ProjectDetails from './components/articles/articledetails';
 
 const user = {
   id: '',
@@ -26,10 +27,11 @@ class App extends Component {
         <Nav user={user}/>
         <Switch>
         {/* Render dynamic page without maintaining navlinks */}
-        <Route path='/:page' component={PageRenderer} />
+        <Route exact path='/:page' component={PageRenderer} />
         <Route exact path="/">
                 <Redirect to="/home_page" />
-              </Route>
+        </Route>
+        <Route path='/article/:id' component={ProjectDetails} />
         <Route component={()=>'404'} />
         </Switch>
       </div>

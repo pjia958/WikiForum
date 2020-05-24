@@ -5,7 +5,7 @@ import {Avatar} from 'antd'
 const navLinks = [
     {
         title: 'New Article',
-        path: '/newarticle_page'
+        path: '/createarticle_page'
     },
     {
         title: 'Log out',
@@ -23,7 +23,6 @@ export default function SignedinNav(user){
     const [menuActive, setMenuActive] = useState(false)
 
     return (
-        <nav className="navigationbar">
             <div className={`menu-content-container ${menuActive && 'active'}`}>  
                 <ul>
                     { navLinks.map((link, index)=> (
@@ -39,6 +38,5 @@ export default function SignedinNav(user){
                 {/* responsive component */}
                 <i className="ionicons icon ion-ios-menu" onClick={()=>setMenuActive(!menuActive)}/>
             </div>
-        </nav> 
     )
 }

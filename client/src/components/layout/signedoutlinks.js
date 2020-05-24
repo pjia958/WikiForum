@@ -17,7 +17,6 @@ export default function SignedoutNav({user}){
     const [menuActive, setMenuActive] = useState(false)
 
     return (
-        <nav className="navigationbar white">
             <div className={`menu-content-container ${menuActive && 'active'}`}>  
                 <ul>
                     { navLinks.map((link, index)=> (
@@ -27,6 +26,6 @@ export default function SignedoutNav({user}){
                     ))}
                 </ul>
             </div>
-        </nav> 
+        
     )
 }
