@@ -38,7 +38,9 @@ export default router => {
 
     router.post("/article/newArticle", (req, res)=> {
         console.log("server recieved the post req, handling...",req.body,'user info:',req.user)
-        // if (req.user) {
+        //insertArticle is not a function, why? 
+        
+        //if (req.user) {
         // if (true) {
         //     insertArticle(req.body).then(
         //     (result) => { res.send(Object.assign({}, result._doc, { postCreated: true })); },
@@ -56,6 +58,10 @@ export default router => {
             (result) => {console.log(result)},
             (error) => { res.send({ postCreated: false }); }
           );
+    });
+
+    router.post("/article/newArticle", (req, res)=> {
+        
     });
 
     router.post('/signup', async (req, res) => {

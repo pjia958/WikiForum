@@ -9,8 +9,6 @@ const insertArticle = (article) => {
       const newArticle = new Article({
         title: article.title,
         content: article.content,
-        user_id: 1234123,
-        user: "Goo",
         date: new Date()
       });
   
