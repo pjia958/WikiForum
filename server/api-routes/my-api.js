@@ -6,6 +6,8 @@ import initialize from '../../athenConfig'
 import insertArticle from '../controller/articlecontrl'
 import {Article, User} from '../db/schema'
 import mongoose from 'mongoose'
+import mongooseCrudify from 'mongoose-crudify';
+
 
 //it should be use in database
 const users = []
@@ -16,26 +18,17 @@ initialize(
 
 export default router => {
     // test
-    router.get("/msg", (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.json({ message: `Hello, WikiForum User! Unique ID: ${uuid()}` });
-        //res.send(`Hello you touched the server and the id is ${uuid()}`)
-    });
-
     router.get("/greeting", (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
-
         res.json({ message: `Hello, world! Unique ID: ${uuid()}` });
 
     });
 
     router.post("/calculate", (req, res) => {
-
         const result = parseInt(req.body.a) + parseInt(req.body.b);
         res.json({ result });
-
     });
-
+    
     router.post("/article/newArticle", (req, res)=> {
         console.log("server recieved the post req, handling...",req.body)
         //insertArticle is not a function, why? 
@@ -61,10 +54,12 @@ export default router => {
           );
     });
 
-    router.post("/article/newArticle", (req, res)=> {
-        
-    });
+    router.use('/allArticles', mongooseCrudify({
+        Model: Article
+    }));
 
+
+    //Auth
     router.post('/signup', async (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
         console.log('the req body is: ',req.body)

@@ -1,15 +1,26 @@
 import React from 'react'
-import ShowArticles from './showarticles'
 import {connect} from 'react-redux'
+
+import ShowArticles from './showarticles'
+
+import {loadArticles} from '../redux/actions/thunks'
+
 // To show article lists
 class Home extends React.Component {
 
     constructor(props){
         super(props)
+        this.state = {}
+    }
+
+    componentDidMount() {
+        this.props.loadArticles();
     }
 
     render() {
         //console.log('check props from home:',this.props) :can get access
+        console.log(this.props)
+
         const { articles } = this.props
         return(
             <div className="container">
@@ -27,4 +38,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = {
+    loadArticles
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
