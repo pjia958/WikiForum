@@ -15,7 +15,7 @@ const articleReducer = (state = initState, action) => {
             console.log('create article', action.article)
             return state;
         case 'CREATE_ARTICLE_ERROR':
-            console.log('create project error', action.error)
+            console.log('create article error', action.error)
             return state;
         default:
             return state;

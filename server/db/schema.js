@@ -34,7 +34,8 @@ export const User = mongoose.model('User', userSchema, 'User');
 const articleSchema = new Schema({
     title: { type: String, required: true },
     content: { type: String, required: true },
-    user_id: mongoose.Schema.ObjectId,
+    user_id: {type: String},
+    // user_id: mongoose.Schema.ObjectId,
     // user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     date: Date,
 }, {

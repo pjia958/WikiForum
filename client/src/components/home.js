@@ -13,7 +13,6 @@ class Home extends React.Component {
         const { articles } = this.props
         return(
             <div className="container">
-                successfully render
                 <div className="row">
                     <ShowArticles articles={articles}/>
                 </div>

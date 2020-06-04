@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownPorps) => {
     const id = ownPorps.match.params.id;
     const articles = state
     return {
-        ·
+        
     }
 }
 

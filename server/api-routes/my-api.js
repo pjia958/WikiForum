@@ -37,7 +37,7 @@ export default router => {
     });
 
     router.post("/article/newArticle", (req, res)=> {
-        console.log("server recieved the post req, handling...",req.body,'user info:',req.user)
+        console.log("server recieved the post req, handling...",req.body)
         //insertArticle is not a function, why? 
         
         //if (req.user) {
@@ -52,6 +52,7 @@ export default router => {
         const newArticle = new Article({
             title: req.body.title,
             content: req.body.content,
+            user_id: req.body.user_id,
             date: new Date()
           });
             newArticle.save().then(
