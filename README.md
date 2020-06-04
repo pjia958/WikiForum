@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### A WikiForum App
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+Wikipedia is one of the most popular online resources, so on average, people spend quite a bit of time on Wikipedia;
+ 
+yet there is surprisingly little social interaction possibility. 
 
-### `npm start`
+The talk pages on Wikipedia are predominantly for editorial discussions and not for general discussion on a topic and also have some drawbacks, being basically just a wikipage. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project is about building a social media web app around Wikipedia that may offer functions such as forum, recommender, commenting and Q&A functions.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Various ways of linking to Wikipedia content/importing content are possible, ideal would be a system where one can annotate questions and comments directly to specific points in the text.
 
-### `npm test`
+## Core Feature
+One can annotate questions and comments directly to specific points in the text
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Some Tech/Dependencies in use
+React: Mainly invovled
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Scss: Css style control
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+React router: Solving routing issues
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Antd: style misc like avatars and something
 
-### `npm run eject`
+Moment.js: handle posts, request with fake date within json
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Jquery: an old way to handle ajax
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Nomdemon: hot fresh dev tool
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ ## Wiki api
+get the content and handle exceptions(e.g. no such article)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ ## Done - Features
+Nav bar
 
-## Learn More
+Basic page layout
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Fetch wiki article content
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ ## To-dos
+ Data base: structure(login, wikiarticle-blog)
 
-### Code Splitting
+ Optimize fetching wiki article content: 
+    what if the response is only a title?
+    what if the response is a series of related hyperlink?
+    what if the input is a random string
+ 
+ Login function
+ 
+ Optimize the layout of article content
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+ Anotate the article
 
-### Analyzing the Bundle Size
+ Home page: update articles in database(by getting json?)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+  ## Notes of some features / components
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  * The fetch wiki pages api is now done in Jquery and in render() by ajax rather than in componentWillMount() : This will cause empty content when access it.
