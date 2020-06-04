@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 
 const ArticleDetails = (props) => {
     // console.log(props)
@@ -20,4 +22,13 @@ const ArticleDetails = (props) => {
     )
 }
 
-export default ArticleDetails
+const mapStateToProps = (state, ownPorps) => {
+    console.log(state)
+    const id = ownPorps.match.params.id;
+    const articles = state
+    return {
+        ·
+    }
+}
+
+export default compose(connect(mapStateToProps),)(ArticleDetails)
