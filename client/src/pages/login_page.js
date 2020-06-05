@@ -7,13 +7,11 @@ export default function LoginPage(){
     <div className="row">
         <div className="col-md-4 col-md-offset-4">
             <Login />
+            Don't have an account? Click here to sign up.
+            <Link to='/signup_page'>Sign Up~</Link>
         </div>
         <div>
             {/* <p>${message.error}</p> */}
-        </div>
-        <div>
-            Don't have an account? Click here to sign up.
-            <Link to='/signup_page'>Sign Up~</Link>
         </div>
     </div>
     )

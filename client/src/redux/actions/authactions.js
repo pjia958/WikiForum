@@ -11,12 +11,12 @@ import {signUp, logIn} from '../../api/authmanagement'
 
 export const userSignup = (userdata) => {
     return (dispatch, getState) => {
-        signUp(userdata).then(
+        signUp(userdata).then(()=>{
             dispatch({
                 type : USER_SIGNUP_SUCCESS,
                 //userData : userdata
             })
-        ).catch((err)=>{
+        }).catch((err)=>{
             dispatch({
                 type : USER_SIGNUP_ERROR,
                 err : err
@@ -28,12 +28,12 @@ export const userSignup = (userdata) => {
 
 export const userLogin = (userdata) => {
     return (dispatch, getState) => {
-        logIn(userdata).then(
+        logIn(userdata).then(()=>{
             dispatch({
                 type : USER_LOGIN_SUCCESS,
-                //userData : userdata
+                userData : userdata
             })
-        ).catch((err)=>{
+        }).catch((err)=>{
             dispatch({
                 type : USER_LOGIN_ERROR,
                 err : err
@@ -44,13 +44,15 @@ export const userLogin = (userdata) => {
 
 export function userSignupError(err) {
     return {
-        type: USER_SIGNUP_ERROR
+        type: USER_SIGNUP_ERROR,
+        err
     }
 }
 
-export function userSignupSuccess() {
+export function userSignupSuccess(user) {
     return {
-        type: USER_SIGNUP_SUCCESS
+        type: USER_SIGNUP_SUCCESS,
+        user
     }
 }
 

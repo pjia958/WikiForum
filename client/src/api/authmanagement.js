@@ -23,8 +23,12 @@ export function signUp(usersData){
 
 
 export function logIn(usersData){
+  console.log(usersData)
   return fetch(config.serverUrl+'/api/auth/login', {
     method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+  },
     body: JSON.stringify(
       {
         ...usersData

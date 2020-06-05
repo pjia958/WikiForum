@@ -7,10 +7,10 @@ import initializePassport from '../../athenConfig'
 import {User} from '../db/schema'
 import session from 'express-session'
 
-let users=[]
-initializePassport(passport, 
-    email => users.find(user=>user.email === email)
-)
+// let users=[]
+// initializePassport(passport, 
+//     email => users.find(user=>user.email === email)
+// )
 
 export default router => {
     //Auth
@@ -55,25 +55,30 @@ export default router => {
     // }))
 
     router.post('/auth/login', async (req, res) => {
+        console.log(req.body)
         var email = req.body.email;
-        var password = req.body.password
-        var hashedPassword = await bcypt.hash(password, 10)
-        User.findOne({email: email, password: hashedPassword}, function(err, user){
+        var password = req.body.password;
+        //var hashedPassword = await bcypt.hash(password, 10)
+        User.findOne({email: email}, function(err, user){
             if(err) {
                 console.log(err);
                 return res.status(500).send();
             }
-
             if(!user){
+                console.log('no such user')
                 return res.status(404).send();
             }
-            req.session.user = user
-            return res.status(200).send()
+        bcypt.compare(password, user.password, function(err, result){
+            if(result){
+                console.log('there is one guy')
+                return res.status(200).send()
+
+            }
+        })
+            //console.log(user)
         })
 
     })
-
-    router.get()
 
     router.get("/auth", (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");

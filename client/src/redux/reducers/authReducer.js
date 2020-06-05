@@ -58,9 +58,9 @@ function auth_UserLogin(state, action){
 }
 
 function auth_UserLoginError(state, action){
-
+    return state
 }
 
 function auth_UserLoginSucess(state, action){
-
+    return state
 }
