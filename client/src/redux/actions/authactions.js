@@ -1,4 +1,3 @@
-
 import {
     USER_SIGNUP,
     USER_SIGNUP_ERROR,
@@ -7,11 +6,39 @@ import {
     USER_LOGIN_SUCCESS,
     USER_LOGIN_ERROR
 } from './action-types'
+import {signUp, logIn} from '../../api/authmanagement'
 
-export function userSignup(user) {
-    return {
-        type: USER_SIGNUP,
-        user
+
+export const userSignup = (userdata) => {
+    return (dispatch, getState) => {
+        signUp(userdata).then(
+            dispatch({
+                type : USER_SIGNUP_SUCCESS,
+                //userData : userdata
+            })
+        ).catch((err)=>{
+            dispatch({
+                type : USER_SIGNUP_ERROR,
+                err : err
+            })
+        })
+    }
+
+}
+
+export const userLogin = (userdata) => {
+    return (dispatch, getState) => {
+        logIn(userdata).then(
+            dispatch({
+                type : USER_LOGIN_SUCCESS,
+                //userData : userdata
+            })
+        ).catch((err)=>{
+            dispatch({
+                type : USER_LOGIN_ERROR,
+                err : err
+            })
+        })
     }
 }
 
@@ -24,13 +51,6 @@ export function userSignupError(err) {
 export function userSignupSuccess() {
     return {
         type: USER_SIGNUP_SUCCESS
-    }
-}
-
-export function userLogin() {
-    return {
-        type: USER_LOGIN
-        //userData
     }
 }
 

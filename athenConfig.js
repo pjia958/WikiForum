@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 const LocalStrategy = require('passport-local').Strategy
 
 // signup and login
-export default async function initialize(passport, getUserByEmail) {
+export default function initializePassport(passport, getUserByEmail) {
     const authenticateUser = async (email, password, done) => {
         const user = getUserByEmail(email)
         if (user == null){
@@ -21,6 +21,7 @@ export default async function initialize(passport, getUserByEmail) {
     }
 
     passport.use(new LocalStrategy({ usernameField : 'email'}, authenticateUser))
+    //may store in session
     passport.serializeUser((user, done) => { })
     passport.deserializeUser((id, done) => {})
 }

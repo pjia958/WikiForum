@@ -7,8 +7,6 @@ import {
     USER_LOGIN_ERROR 
 } from '../actions/action-types'
 
-import {signUp} from '../../api/authmanagement'
-
 const initState = {
     authInfo : {
         isEmpty: false,
@@ -41,20 +39,22 @@ export default authReducer
 
 function auth_UserSignUp(state, action){
     console.log(action.user)
-    signUp(action.user)
     return state
 }
 
 function auth_UserSignUpError(state, action){
-
+    return state
 }
 
 function auth_UserSignUpSuccess(state, action){
-
+    console.log('user+1:',action)
+    console.log('state:',state)
+    return state
 }
 
 function auth_UserLogin(state, action){
-
+    console.log(action)
+    return state
 }
 
 function auth_UserLoginError(state, action){

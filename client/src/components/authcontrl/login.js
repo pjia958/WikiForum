@@ -1,6 +1,7 @@
 import React from 'react'
 import logIn from '../../api/authmanagement'
 import {userLogin} from '../../redux/actions/authactions'
+import {connect} from 'react-redux'
 
 
 class Login extends React.Component {
@@ -46,4 +47,11 @@ class Login extends React.Component {
     
 }
 
-export default Login
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userLogin: (user) => dispatch(userLogin(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

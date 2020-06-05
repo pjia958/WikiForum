@@ -7,11 +7,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import passport from 'passport'
 import flash from 'express-flash'
-import initialize from './athenConfig'
+import initializePassport from './athenConfig'
 
 
 // Setup Express
-// const express = require('express')
 const app = express();
 const port = process.env.PORT || 10001;
 
@@ -41,20 +40,16 @@ mongoose.connect('mongodb://localhost:27017/WikiForumTest', { useNewUrlParser: t
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~  login ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const users = []
+initializePassport(passport, 
+    email => users.find(user=>user.email === email)
+)
+
+
 app.use(express.urlencoded({extended : false}))
-//this should be in database
-//const users = []
-// initializePassport(
-//     passport, 
-//     email => users.find(user => user.email === email)
-// )
 app.use(passport.initialize())
 app.use(passport.session())
-// app.use(seesion({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false
-// }))
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~  login end ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

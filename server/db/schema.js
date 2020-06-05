@@ -10,9 +10,8 @@ const Schema = mongoose.Schema;
 // We also don't need to manually do created / updated timestamps if we need them.
 
 const userSchema = new Schema({
-
-    firstName: String,  // Basic fields
-    lastName: String,
+    firstName: {type : String, required: true},  // Basic fields
+    lastName: {type: String, required: true},
     email: { type: String, unique: true },
     password: String,
 }, { /* This second object allows us to specify more config info. In this case, we're enabling automatic timetamps using the default options.

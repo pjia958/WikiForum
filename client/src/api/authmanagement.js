@@ -1,15 +1,13 @@
 import config from '../config'
-
-
+import {} from '../'
 // email : '',
 // password : '',
 // firstName : '',
 // lastName : ''
 
-
 export function signUp(usersData){
-  console.log("signing up..."+ usersData)
-  
+  console.log("signing up...", usersData)
+  // return a promise
     return fetch(config.serverUrl+'/api/auth/signup', {
         method: 'post',
         headers: {
@@ -20,12 +18,16 @@ export function signUp(usersData){
           ...usersData
         }
       )
-      });
+      })
 }
 
+
 export function logIn(usersData){
-  return fetch('http://localhost:10001/api/login', {
+  return fetch(config.serverUrl+'/api/auth/login', {
     method: 'post',
-    body: usersData
-  });
+    body: JSON.stringify(
+      {
+        ...usersData
+      }
+    )  });
 }
