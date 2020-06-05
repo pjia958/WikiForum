@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import ShowArticles from './showarticles'
-
 import {loadArticles} from '../redux/actions/thunks'
 
 // To show article lists
@@ -18,14 +16,13 @@ class Home extends React.Component {
     }
 
     render() {
-        //console.log('check props from home:',this.props) :can get access
-        console.log(this.props)
-
-        const { articles } = this.props
+        //console.log('check props from home:',this.props.article) 
+        const { article } = this.props
+        //console.log(article)
         return(
             <div className="container">
                 <div className="row">
-                    <ShowArticles articles={articles}/>
+                    <ShowArticles articles={article}/>
                 </div>
             </div>
         )
@@ -33,8 +30,9 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    //console.log(state.article)
     return {
-        article: state.article.articles
+        article: state.article
     }
 }
 

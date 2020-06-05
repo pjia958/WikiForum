@@ -10,10 +10,10 @@ class ShowArticles extends Component {
     }
 
     render() {
-        const { articles } = this.props
+        const { article } = this.props
         return(
             <div>
-                <ArticleList articles={articles} />
+                <ArticleList articles={article} />
             </div>
         )
     }
@@ -21,7 +21,7 @@ class ShowArticles extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        articles : state.article.articles
+        article: state.article
     }
 }
 

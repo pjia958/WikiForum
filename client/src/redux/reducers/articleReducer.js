@@ -39,7 +39,8 @@ function articles_LoadArticlesLoading(state, action){
 }
 
 function articles_LoadArticlesSuccess(state, action){
-    var incoming = action.payload
+    var incoming = action.articles.payload
+    //console.log(action.articles.payload)
     return incoming
 }
 
