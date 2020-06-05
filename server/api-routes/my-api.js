@@ -11,10 +11,7 @@ import mongooseCrudify from 'mongoose-crudify';
 
 //it should be use in database
 const users = []
-initialize(
-    passport, 
-    email => users.find(user => user.email === email)
-)
+
 
 export default router => {
     // test
@@ -58,31 +55,5 @@ export default router => {
         Model: Article
     }));
 
-
-    //Auth
-    router.post('/signup', async (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        console.log('the req body is: ',req.body)
-        try{
-            const hashedPassword = await bcypt.hash(req.body.password, 10)
-            users.push({
-                id: uuid().toString(),
-                email: req.body.email,
-                firstname: req.body.firstName,
-                lastname: req.body.lastName,
-                password: hashedPassword
-            })
-            res.redirect('http://localhost:3000/login_page')
-        } catch {
-            console.log('issues happen when sign up')
-            res.redirect('http://localhost:3000/signup_page')
-        }
-    })
-
-    router.post('/login', passport.authenticate('local', {
-        successRedirect: 'http://localhost:3000/',
-        failureRedirect: 'http://localhost:3000/login_page',
-        failureFlash: true
-    }))
     
 }

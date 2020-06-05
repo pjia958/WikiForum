@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createArticle} from '../../redux/actions/articleactions'
 import FetchArticle from '../fetcharticle'
+
 class CreateArticle extends React.Component {
     state = {
         title : '',

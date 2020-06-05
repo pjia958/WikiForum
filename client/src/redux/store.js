@@ -10,7 +10,8 @@ import thunk from 'redux-thunk';
 
 // Initial state
 const initialState = {
-    articles: []
+    articles: [],
+    auth: 'hello'
 }
 
 // Config for redux-persist

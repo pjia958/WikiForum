@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Avatar} from 'antd'
 import SignedinNav from './signedinlinks'
 import SignedoutNav from './signedoutlinks'
+import { connect } from 'react-redux'
 
 const navLinks = [
     {
@@ -11,9 +12,8 @@ const navLinks = [
     }
 ]
 
-export default function Nav({user}){
+const Nav = () => {
     const [menuActive, setMenuActive] = useState(false)
-
     return (
         <nav className="navigationbar white">
             <span className="menu-title">~WikiForum~</span>
@@ -31,3 +31,12 @@ export default function Nav({user}){
         </nav> 
     )
 }
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    return{
+
+    }
+}
+
+export default connect(mapStateToProps)(Nav)

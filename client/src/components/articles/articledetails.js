@@ -27,17 +27,15 @@ const ArticleDetails = (props) => {
             <div className="container center">
                 <p>Loading articles...</p>
             </div>
-            )
+        )
     }
 }
 
 const mapStateToProps = (state, ownPorps) => {
     const id = ownPorps.match.params.id;
     const articles = state.article
-    console.log(articles)
-    console.log('targetid:'+id)
-    // console.log(articles[0]._id)
-
+    // console.log(articles)
+    // console.log('targetid:'+id)
     // const thisArticle = articles ? articles._id : null
     for (var i = 0; i < articles.length; i++) {
         if(id === articles[i]._id){

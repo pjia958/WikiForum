@@ -5,12 +5,13 @@ import {
     LOAD_ARTICLES_LOADING,
     LOAD_ARTICLES_SUCCESS,
     LOAD_ARTICLES_ERROR,
+    CREATE_ARTICLE,
+    CREATE_ARTICLE_ERROR
 } from './action-types'
 
 
 export const createArticle = (article) => {
-    console.log("create article from actions:", article)
-    //console.log('tartget address: '+ config.serverUrl + 'api/article/newArticle')
+    //console.log("create article from actions:", article)
     return (dispatch, getState) => {
         // halting dispach, make async call to db
         fetch(config.serverUrl + '/api/article/newArticle', {
@@ -25,12 +26,12 @@ export const createArticle = (article) => {
         }).then(()=>
         {
             dispatch({
-                type : 'CREATE_ARTICLE',
+                type : CREATE_ARTICLE,
                 article : article
             })
         }).catch((err)=>{
             dispatch({
-                type : 'CREATE_ARTICLE_ERROR',
+                type : CREATE_ARTICLE_ERROR,
                 err : err       
             })
         })

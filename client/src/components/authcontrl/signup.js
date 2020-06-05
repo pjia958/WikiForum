@@ -1,7 +1,10 @@
 import React from 'react'
 import {signUp} from '../../api/authmanagement'
+import {userSignup} from '../../redux/actions/authactions'
+import {connect} from 'react-redux'
 
-export class Signup extends React.Component {
+
+class Signup extends React.Component {
     state = {
         email : '',
         password : '',
@@ -20,18 +23,7 @@ export class Signup extends React.Component {
         e.preventDefault();
         e.preventDefault();
         console.log(this.state)
-        // let signupData = new FormData()
-        // signupData.append('c', 'login');
-        // signupData.append('email', this.state.email)
-        // signupData.append('password', this.state.password)
-        // signupData.append('firstname', this.state.firstName)
-        // signupData.append('lastname', this.state.lastName)
-        // let signupData = new FormData()
-
-        // console.log(this.state)
-        // console.log(signupData)
-
-        // signUp(signupData)
+        this.props.userSignup(this.state)
     }
 
     render() {
@@ -39,24 +31,6 @@ export class Signup extends React.Component {
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                 <h4>Sign up</h4>
-                {/* <form action="http://localhost:10001/api/signup" method="POST" className="white">
-                <div>
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" required />
-                </div>
-                <div>
-                <label htmlFor="password">Password</label>
-                <input type="text" id="password" name="password" required />
-                </div>
-                <div>
-                <label htmlFor="firstname">First Name</label>
-                <input type="text" id="firstname" name="firstname" required />
-                </div>
-                <div>
-                <label htmlFor="lastname">Last Name</label>
-                <input type="text" id="lastname" name="lastname" required />
-                </div>
-                <button type="submit">Sign up</button> */}
                 <div className="input-field">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" onChange={this.handleChange}/>
@@ -82,3 +56,11 @@ export class Signup extends React.Component {
     }
     
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userSignup: (user) => dispatch(userSignup(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Signup)

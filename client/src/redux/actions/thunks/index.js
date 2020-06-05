@@ -17,6 +17,5 @@ export function loadArticles() {
 
                 // If there was an error loading todos, dispatch the LOAD_TODOS_ERROR action providing details of the error
                 error => dispatch(loadArticlesError(error.message || "Unexpected error!")));
-
     }
 }

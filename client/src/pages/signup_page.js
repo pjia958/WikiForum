@@ -1,7 +1,7 @@
 import React from 'react'
-import {Signup} from '../components/authcontrl/signup'
+import Signup from '../components/authcontrl/signup'
 
-export default function LoginPage(){
+export default function SignupPage(){
     return (
         <div className="row"> 
         <div className="col-md-4 col-md-offset-4">

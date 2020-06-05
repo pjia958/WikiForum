@@ -1,8 +1,25 @@
+import config from '../config'
+
+
+// email : '',
+// password : '',
+// firstName : '',
+// lastName : ''
+
+
 export function signUp(usersData){
-  console.log("signing up...")
-    return fetch('http://localhost:10001/api/signup', {
+  console.log("signing up..."+ usersData)
+  
+    return fetch(config.serverUrl+'/api/auth/signup', {
         method: 'post',
-        body: usersData
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          ...usersData
+        }
+      )
       });
 }
 

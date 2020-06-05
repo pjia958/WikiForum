@@ -1,5 +1,7 @@
 import React from 'react'
 import logIn from '../../api/authmanagement'
+import {userLogin} from '../../redux/actions/authactions'
+
 
 class Login extends React.Component {
     state = {
@@ -17,10 +19,8 @@ class Login extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        // const loginData = new FormData (e.target)
-        // //logIn(loginData)
-        // console.log('the login data is: ' ,loginData)
-        // console.log(this.state)
+        this.props.userLogin(this.state)
+
     }
 
     render() {
