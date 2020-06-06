@@ -1,6 +1,7 @@
 import React from 'react'
 import {userLogin} from '../../redux/actions/authactions'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
 class Login extends React.Component {
@@ -18,7 +19,7 @@ class Login extends React.Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        //console.log(this.state)
         this.props.userLogin(this.state)
 
     }
@@ -27,7 +28,7 @@ class Login extends React.Component {
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                <h4>Sign in</h4>
+                <h4>Log in</h4>
                 <div className="input-field">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" onChange={this.handleChange}/>
@@ -40,6 +41,8 @@ class Login extends React.Component {
                     <button className="btn pink lighten-1 z-depth-0">Login</button>
                 </div>
                 </form>
+                Don't have an account? Click here to sign up.
+            <Link to='/signup_page'>Sign Up~</Link>
             </div>
         );
     }

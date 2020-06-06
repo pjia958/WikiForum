@@ -4,6 +4,8 @@ import {Avatar} from 'antd'
 import SignedinNav from './signedinlinks'
 import SignedoutNav from './signedoutlinks'
 import { connect } from 'react-redux'
+import { currentUser } from '../../api/authmanagement'
+
 
 const navLinks = [
     {
@@ -14,6 +16,7 @@ const navLinks = [
 
 const Nav = () => {
     const [menuActive, setMenuActive] = useState(false)
+    if (localStorage.getItem('ifLogged') === 'Y'){
     return (
         <nav className="navigationbar white">
             <span className="menu-title">~WikiForum~</span>
@@ -24,12 +27,29 @@ const Nav = () => {
                             <Link to={link.path}>{link.title}</Link>
                         </li>
                     ))}
-                    <SignedoutNav />
+                    {/* <SignedoutNav /> */}
                     <SignedinNav />
                 </ul>
             </div>
         </nav> 
-    )
+    )} else {
+        return (
+            <nav className="navigationbar white">
+                <span className="menu-title">~WikiForum~</span>
+                <div className={`menu-content-container ${menuActive && 'active'}`}>  
+                    <ul>
+                        { navLinks.map((link, index)=> (
+                            <li key={index}>
+                                <Link to={link.path}>{link.title}</Link>
+                            </li>
+                        ))}
+                        <SignedoutNav />
+                        {/* <SignedinNav /> */}
+                    </ul>
+                </div>
+            </nav> 
+        )
+    }
 }
 
 const mapStateToProps = (state) => {

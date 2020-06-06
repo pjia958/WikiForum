@@ -6,11 +6,14 @@ import passport from 'passport'
 import initializePassport from '../../athenConfig'
 import {User} from '../db/schema'
 import session from 'express-session'
+import cookieParser from 'cookie-parser'
 
 // let users=[]
 // initializePassport(passport, 
 //     email => users.find(user=>user.email === email)
 // )
+
+var currentUser = {}
 
 export default router => {
     //Auth
@@ -23,9 +26,8 @@ export default router => {
             errors.push({ msg: 'Please fill in all fields' })
         }
         // Other validation...
-
         if (errors.length > 0) {
-            res.redirect('http://localhost:3000/')
+            //res.redirect('http://localhost:3000/')
         }
         else{
         try{
@@ -37,13 +39,17 @@ export default router => {
                 password: hashedPassword
             });
             newUser.save().then(
-            (result) => {console.log(result) },
-            (error) => { res.send({ postCreated: false }); }
+            (result) => {
+                console.log(result) 
+                return res.status(200).send()
+            },
+            (error) => {
+                return res.status(500).send({ postCreated: false }); 
+            }
             )
-            res.redirect('http://localhost:3000/')
-
         } catch {
             console.log('issues happen when sign up')
+            return res.status(500).send()
         }
     }
     })
@@ -70,8 +76,13 @@ export default router => {
             }
         bcypt.compare(password, user.password, function(err, result){
             if(result){
-                console.log('there is one guy')
-                return res.status(200).send()
+                //console.log('Welcome: ', email)
+                currentUser = user;
+                // req.session.user = user;
+                // console.log('the session is:',req.session);
+                // res.cookie("firstName",user.firstName);
+                // res.cookie("lastName",user.lastName);
+                return res.status(200).send(user)
             }else{
                 console.log('wrong password')
             }
@@ -83,6 +94,6 @@ export default router => {
         res.redirect(302,'/')
     });
     router.get("/auth", (req, res) => {
-        res.redirect('/')
+        console.log('the session is:',req.session)
     });
 }

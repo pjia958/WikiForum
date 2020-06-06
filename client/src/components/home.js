@@ -17,8 +17,8 @@ class Home extends React.Component {
 
     render() {
         //console.log('check props from home:',this.props.article) 
+        console.log()
         const { article } = this.props
-        //console.log(article)
         return(
             <div className="container">
                 <div className="row">

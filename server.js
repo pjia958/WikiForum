@@ -8,6 +8,7 @@ import cors from 'cors';
 import passport from 'passport'
 import flash from 'express-flash'
 import initializePassport from './athenConfig'
+import cookieParser from 'cookie-parser'
 
 
 // Setup Express
@@ -19,6 +20,8 @@ app.use(cors());
 
 // Setup body-parser
 app.use(bodyParser.json({ extended: false }));
+
+app.use(cookieParser());
 
 // Setup express-session
 app.use(session({

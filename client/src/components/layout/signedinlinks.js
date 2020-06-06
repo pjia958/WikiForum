@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Avatar} from 'antd'
-
+//import { currentUser } from '../../api/authmanagement'
 const navLinks = [
     {
         title: 'New Article',
@@ -13,15 +13,17 @@ const navLinks = [
     },
 
 ]
+var lastName = 'Hi guest~'
+var firstName = '' 
 
-let Auser = {
-    firstName : 'Jiang',
-    lastName : 'Peng'
+if(localStorage.ifLogged === 'Y'){
+    firstName = localStorage.getItem('firstName')
+    lastName= localStorage.getItem('lastName')
 }
 
 export default function SignedinNav(user){
     const [menuActive, setMenuActive] = useState(false)
-
+    //console.log('currentUser: ',currentUser)
     return (
             <div className={`menu-content-container ${menuActive && 'active'}`}>  
                 <ul>
@@ -33,10 +35,10 @@ export default function SignedinNav(user){
                 </ul>
                 <span>
                     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" size={38}/>
-                        <span className="menu-avatar-name">{`${Auser.firstName} ${Auser.lastName}`}</span>
+                        <span className="menu-avatar-name">{`${firstName} ${lastName}`}</span>
                 </span>
                 {/* responsive component */}
-                <i className="ionicons icon ion-ios-menu" onClick={()=>setMenuActive(!menuActive)}/>
+                {/* <i className="ionicons icon ion-ios-menu" onClick={()=>setMenuActive(!menuActive)}/> */}
             </div>
     )
 }
