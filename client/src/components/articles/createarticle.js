@@ -2,13 +2,24 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createArticle} from '../../redux/actions/articleactions'
 import FetchArticle from '../fetcharticle'
+import {TokenAnnotator, TextAnnotator} from 'react-text-annotate'
+import SelectionHighlighter from "react-highlight-selection";
+
 
 class CreateArticle extends React.Component {
     state = {
         title : '',
-        content : ''
+        content : '',
+        firstName : localStorage.getItem('firstName'),
+        lastName : localStorage.getItem('lastName'),
+        htmlContent:''
     }
     
+    constructor() {
+        super();
+        this.selectionHandler = this.selectionHandler.bind(this);
+      }
+
     handleChange = (e) => {
         console.log(e)
         this.setState({
@@ -21,6 +32,11 @@ class CreateArticle extends React.Component {
         //console.log('the article is(from createarti com): ',this.state)
         this.props.createArticle(this.state)
     }
+
+    selectionHandler(selection) {
+        //do something with selection
+        console.log(selection);
+      }
 
     render() {
         return(
@@ -39,6 +55,7 @@ class CreateArticle extends React.Component {
                     <button className="btn pink lighten-1 z-depth-0">Create</button>
                 </div>
                 <FetchArticle />
+                {console.log(this.state.content)}
                 </form>
             </div>
         );

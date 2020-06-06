@@ -14,43 +14,42 @@ const users = []
 
 
 export default router => {
-    // test
-    router.get("/greeting", (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.json({ message: `Hello, world! Unique ID: ${uuid()}` });
-
-    });
-
-    router.post("/calculate", (req, res) => {
-        const result = parseInt(req.body.a) + parseInt(req.body.b);
-        res.json({ result });
-    });
-    
     router.post("/article/newArticle", (req, res)=> {
-        console.log("server recieved the post req, handling...",req.body)
-        //insertArticle is not a function, why? 
-        
-        //if (req.user) {
-        // if (true) {
-        //     insertArticle(req.body).then(
-        //     (result) => { res.send(Object.assign({}, result._doc, { postCreated: true })); },
-        //     (error) => { res.send({ postCreated: false }); }
-        //   );
-        // } else {
-        //   res.send({ postCreated: false });
-        // }
+        //console.log("server recieved the post req, handling...",req.body)
         const newArticle = new Article({
             title: req.body.title,
             content: req.body.content,
-            user_id: req.body.user_id,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            htmlContent: req.body.htmlContent,
             date: new Date()
           });
             newArticle.save().then(
-            (result) => {console.log(result)},
-            (error) => { res.send({ postCreated: false }); },
-            res.redirect('http://localhost:3000/'),
-            console.log('try to redirect')
+            (result) => {
+                console.log(result)
+                return res.status(200).send()
+            },
+            (error) => {
+                 return res.statues(500).send({ postCreated: false }); 
+            },
           );
+    });
+
+
+    router.post('/article/updateArticle', (req, res) => {
+        console.log(req.body); //get it
+        let articleId = req.body._id;
+        let articleHtmlContent = req.body.htmlContent;
+        Article.findOneAndUpdate({_id : articleId}, {htmlContent: articleHtmlContent}).then(
+            (result) => {
+                console.log(result)
+                return res.status(200).send()
+            },
+            (error) => {
+                 return res.statues(500).send({ postCreated: false }); 
+            },
+        )
+        
     });
 
     router.use('/allArticles', mongooseCrudify({

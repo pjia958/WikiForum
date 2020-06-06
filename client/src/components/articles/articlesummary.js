@@ -7,7 +7,7 @@ const ArticleSummary = ({article}) => {
             <div className="card-content grey-text text-darken-3">
     <span className="card-title">{article.title}</span>
                 <p>Article id:{article._id}</p>
-                <p>Posted by {article.user_id}</p>
+                <p>Posted by {article.firstName} {article.lastName}</p>
                 <p className="grey-text">{article.date.substring(0, 10)}</p>
             </div>
         </div>

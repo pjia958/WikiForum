@@ -21,7 +21,6 @@ export const createArticle = (article) => {
             },
             body: JSON.stringify({
                 ...article,
-                user_id: '12312312312123',
             })
         }).then(()=>
         {
@@ -29,7 +28,9 @@ export const createArticle = (article) => {
                 type : CREATE_ARTICLE,
                 article : article
             })
+            window.location = "http://localhost:3000"
         }).catch((err)=>{
+            window.location = "http://localhost:3000"
             dispatch({
                 type : CREATE_ARTICLE_ERROR,
                 err : err       
