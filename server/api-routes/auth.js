@@ -40,7 +40,7 @@ export default router => {
             (result) => {console.log(result) },
             (error) => { res.send({ postCreated: false }); }
             )
-            //res.redirect('http://localhost:3000/login_page')
+            res.redirect('http://localhost:3000/')
 
         } catch {
             console.log('issues happen when sign up')
@@ -62,7 +62,7 @@ export default router => {
         User.findOne({email: email}, function(err, user){
             if(err) {
                 console.log(err);
-                return res.status(500).send();
+                return res.status(500).send('logged in');
             }
             if(!user){
                 console.log('no such user')
@@ -72,17 +72,17 @@ export default router => {
             if(result){
                 console.log('there is one guy')
                 return res.status(200).send()
-
+            }else{
+                console.log('wrong password')
             }
         })
-            //console.log(user)
-        })
-
+    })
     })
 
-    router.get("/auth", (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.json({ message: `Hello, world!` });
+    router.post("/auth", (req, res) => {
+        res.redirect(302,'/')
     });
-    
+    router.get("/auth", (req, res) => {
+        res.redirect('/')
+    });
 }

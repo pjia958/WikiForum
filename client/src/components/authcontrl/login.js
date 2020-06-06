@@ -1,5 +1,4 @@
 import React from 'react'
-import logIn from '../../api/authmanagement'
 import {userLogin} from '../../redux/actions/authactions'
 import {connect} from 'react-redux'
 

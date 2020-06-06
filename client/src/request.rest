@@ -1,1 +1,5 @@
-# GET http://localhost:10001/api
+POST http://localhost:10001/api/auth
+
+###
+
+GET  http://localhost:10001/api/auth

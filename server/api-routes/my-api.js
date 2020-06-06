@@ -47,7 +47,9 @@ export default router => {
           });
             newArticle.save().then(
             (result) => {console.log(result)},
-            (error) => { res.send({ postCreated: false }); }
+            (error) => { res.send({ postCreated: false }); },
+            res.redirect('http://localhost:3000/'),
+            console.log('try to redirect')
           );
     });
 
