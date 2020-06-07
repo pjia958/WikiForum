@@ -4,7 +4,8 @@ import { compose } from 'redux'
 import SelectionHighlighter from "react-highlight-selection";
 import '../../assets/scss/base.scss'
 import {updateArticle} from '../../api/article'
-import jquery from 'jquery'
+
+let selectedText
 
 const ArticleDetails = (props) => {
     const id = props.match.params.id;
@@ -13,37 +14,52 @@ const ArticleDetails = (props) => {
 
     function selectionHandler(selection) {
         //do something with selection
-        console.log(selection);
+        selectedText = selection.selection
+        console.log(selection.selection);
       }
 
     function handleChange(){
-        let selectedpart = document.getElementById('htmlContent').innerHTML
+        let selectedpart = document.getElementById('htmlContent').innerText
         //console.log(selectedpart);
     }
 
     function handleSubmit(e){
         e.preventDefault();
         let selectedpart = document.getElementById('htmlContent').innerHTML
+        console.log(selectedText)
         //console.log('the article is(from createarti com): ',this.state)
-        //console.log({"htmlContent" : selectedpart, "_id" : article._id});    
-        updateArticle({"htmlContent" : selectedpart, "_id" : article._id})
+        //console.log({"htmlContent" : selectedpart, "_id" : article._id}); 
+        if (localStorage.getItem('firstName') === article.firstName && localStorage.getItem('lastName') === article.lastName) {
+            updateArticle({"htmlContent" : selectedpart, "_id" : article._id, "selectedText": selectedText})
+        }   else {
+            alert('You can\'t update the text, try log in your own account.')
+            window.location = "http://localhost:3000/"
+        }
+    }
+
+    function handleClick(){
+        var ele = document.getElementById("htmlContent");  
+        if (!ele.innerHTML) {
+            var doc = new DOMParser().parseFromString(article.htmlContent, "text/xml");
+            ele.appendChild(doc.documentElement)
+        } else {
+            alert("The auther highlighted: \n" + article.selectedText);   
+            //console.log(article.selectedText);        
+        }
+
     }
 
     if(article){
         console.log(!article.htmlContent);
         if (article.htmlContent){
-            //page with highlight
-            var doc = new DOMParser().parseFromString(article.htmlContent, "text/xml");
-            var ele = document.getElementById("htmlContent");
-            console.log(ele);
-            
+            //page with highlight            
             //document.getElementById("htmlContent").appendChild(doc)
                     return (
         <div className="container section article-details">
             <div className="card z-depth-0">
                 <form onSubmit={handleSubmit}>
                 <div className="card-content">
-                <span className="card-title">{article.title}</span>
+                <span className="card-title" onClick={handleClick}>{article.title}</span>
                     <div id="htmlContent" onClick={handleChange}>
                     {/* <SelectionHighlighter
                         text={article.content}
@@ -60,7 +76,6 @@ const ArticleDetails = (props) => {
                 </div>
                 </form>
             </div>
-            {console.log(document.getElementById("htmlContent"))}
         </div>
         
         )

@@ -40,7 +40,8 @@ export default router => {
         console.log(req.body); //get it
         let articleId = req.body._id;
         let articleHtmlContent = req.body.htmlContent;
-        Article.findOneAndUpdate({_id : articleId}, {htmlContent: articleHtmlContent}).then(
+        let articleSelectedText = req.body.selectedText
+        Article.findOneAndUpdate({_id : articleId}, {htmlContent: articleHtmlContent, selectedText: articleSelectedText}).then(
             (result) => {
                 console.log(result)
                 return res.status(200).send()

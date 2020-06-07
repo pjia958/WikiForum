@@ -45,11 +45,11 @@ class CreateArticle extends React.Component {
                 <h4>New Article</h4>
                 <div className="input-field">
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" onChange={this.handleChange}/>
+                    <input type="text" id="title" onChange={this.handleChange} required/>
                 </div>
                 <div className="input-field">
                     <label htmlFor="content">Content</label>
-                    <textarea id="content" className="materialize-textarea" style={{height: 500}} onChange={this.handleChange}></textarea>
+                    <textarea id="content" className="materialize-textarea" style={{height: 500}} onChange={this.handleChange} required></textarea>
                 </div>
                 <div className="input-field">
                     <button className="btn pink lighten-1 z-depth-0">Create</button>

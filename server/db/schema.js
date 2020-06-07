@@ -36,6 +36,7 @@ const articleSchema = new Schema({
     firstName: {type: String},
     lastName: {type: String},
     htmlContent: {type: String},
+    selectedText: {type: String},
     // user_id: mongoose.Schema.ObjectId,
     // user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     date: Date,
